@@ -3,8 +3,7 @@ server:
 
 logging:
   level:
-    root: error
-    org:
-      springframework: trace
+    root: WARN
+    org.springframework.security: TRACE
 
 

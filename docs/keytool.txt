@@ -1,0 +1,5 @@
+#-----------Create Self-signed certificate (keypair public and private key)----------
+keytool -genkeypair  -storetype PKCS12 -keyalg RSA -keystore oauth2-server.jks -alias oauth2-server-key -keypass htb98980 -storepass htb98980 -dname "CN=localhost, OU=myUnit, O=myOrg, L=Isfahan, ST=Isfahan, C=ir" -ext SAN=dns:localhost,ip:127.0.0.1
+
+#-----------Export key-----------
+keytool -export -keystore ./oauth2-server.jks -alias oauth2-server-alias -file oauth2-server.crt

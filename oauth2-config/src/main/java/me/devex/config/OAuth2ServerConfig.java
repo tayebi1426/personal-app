@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.token.AccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
@@ -24,7 +25,9 @@ import java.util.Map;
 public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
-    private KeyPair keyPair;
+    private TokenStore tokenStore;
+    @Autowired
+    AccessTokenConverter accessTokenConverter;
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -32,7 +35,7 @@ public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
-        oauthServer                .tokenKeyAccess("permitAll()")
+        oauthServer.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()");
     }
 
@@ -48,26 +51,9 @@ public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager);
-    }
-
-    @Bean
-    public TokenStore tokenStore() {
-        return new JwtTokenStore(new CustomJwtAccessTokenConverter());
-    }
-
-    @Bean
-    public JwtAccessTokenConverter accessTokenConverter() {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setKeyPair(keyPair);
-        return converter;
-    }
-    class CustomJwtAccessTokenConverter extends JwtAccessTokenConverter{
-        @Override
-        public Map<String, ?> convertAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {
-            System.out.println("CustomJwtAccessTokenConverter : "+token);
-            return super.convertAccessToken(token, authentication);
-        }
+        endpoints.authenticationManager(authenticationManager)
+                .tokenStore(tokenStore)
+                .accessTokenConverter(accessTokenConverter);
     }
 
 }

@@ -7,18 +7,32 @@ import com.nimbusds.jose.jwk.RSAKey;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 import java.security.KeyPair;
 import java.security.interfaces.RSAPublicKey;
 
 @Configuration
-public class JwsConfig {
+public class JwtConfig {
+
+    @Bean
+    public TokenStore tokenStore(JwtAccessTokenConverter accessTokenConverter) {
+        return new JwtTokenStore(accessTokenConverter);
+    }
+
+    @Bean
+    public JwtAccessTokenConverter accessTokenConverter(KeyPair keyPair) {
+        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+        converter.setKeyPair(keyPair);
+        return converter;
+    }
 
     @Bean
     KeyPair keyPair() {
-        ClassPathResource ksFile =
-                new ClassPathResource("oauth2-server.jks");
+        ClassPathResource ksFile = new ClassPathResource("oauth2-server.jks");
         KeyStoreKeyFactory ksFactory =
                 new KeyStoreKeyFactory(ksFile, "htb98980".toCharArray());
         return ksFactory.getKeyPair("oauth2-server-alias", "htb98980".toCharArray());
