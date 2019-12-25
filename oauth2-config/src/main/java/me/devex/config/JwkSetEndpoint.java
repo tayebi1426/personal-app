@@ -1,4 +1,4 @@
-package me.devex.config;
+package me.dev.config;
 
 import com.nimbusds.jose.jwk.JWKSet;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ class JwkSetEndpoint {
 
     @GetMapping("/.well-known/jwks.json")
     @ResponseBody
-    public Map<String, Object> getKey(Principal principal) {
+    public Map<String, Object> getKey() {
         return jwkSet.toJSONObject();
     }
 }

@@ -1,4 +1,4 @@
-package me.devex.config;
+package me.dev.config;
 
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.jwk.JWKSet;

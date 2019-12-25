@@ -9,8 +9,8 @@
     </parent>
     <artifactId>oauth2-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>personal</name>
-    <description>OAuth2 config</description>
+    <name>OAuth2 config</name>
+    <description>Spring OAuth2 config</description>
     <dependencies>
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
@@ -33,13 +33,5 @@
 
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

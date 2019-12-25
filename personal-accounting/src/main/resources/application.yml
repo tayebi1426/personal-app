@@ -1,18 +1,20 @@
 server:
-  port: 8077
+  port: 9001
 
 spring:
   security:
     oauth2:
-      resource:
-        jwk:
-          key-set-uri: https://idp.example.com/.well-known/jwks.json
-      client:
-        client-id: acc_service_id
-        client-secret: acc_12542_$_sec
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://127.0.0.1:8001/.well-known/jwks.json
+
+  datasource:
+    driverclassname: org.hsqldb.jdbc.JDBCDriver
+    url: jdbc:hsqldb:mem:db;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
 
 logging:
   level:
     root: warn
-    org:
-      springframework: warn
+    org.springframework: warn
