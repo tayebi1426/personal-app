@@ -10,3 +10,5 @@ target/
 *.iml
 *.ipr
 **/target/
+
+/tools/hsqlserver/data/**

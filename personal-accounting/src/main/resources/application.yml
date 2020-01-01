@@ -10,9 +10,9 @@ spring:
 
   datasource:
     driverclassname: org.hsqldb.jdbc.JDBCDriver
-    url: jdbc:hsqldb:mem:db;DB_CLOSE_DELAY=-1
-    username: sa
-    password: sa
+    url: jdbc:hsqldb:hsql://127.0.0.1:5005/db
+    username:
+    password:
 
 logging:
   level:

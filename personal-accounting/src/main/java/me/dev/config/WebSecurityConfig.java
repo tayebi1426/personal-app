@@ -1,9 +1,11 @@
 package me.dev.config;
 
+import me.dev.entity.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -21,6 +23,7 @@ import org.springframework.util.StreamUtils;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Optional;
 
 
 @EnableResourceServer
@@ -68,6 +71,16 @@ public class WebSecurityConfig extends ResourceServerConfigurerAdapter {
         System.out.println("publicKey : "+publicKey);
         tokenConverter.setVerifierKey(publicKey);
         return tokenConverter;
+    }
+
+    @Bean
+    public AuditorAware auditorAware(){
+        return new AuditorAware() {
+            @Override
+            public Optional getCurrentAuditor() {
+                return Optional.empty();
+            }
+        };
     }
 
 }
