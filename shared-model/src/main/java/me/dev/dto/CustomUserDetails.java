@@ -8,6 +8,9 @@ import java.util.Collections;
 
 public class CustomUserDetails implements UserDetails {
 
+    public final static String USER_ID="userId";
+    public final static String USERNAME = "user_name";
+
     private final Integer id;
     private final String username;
     private String password;
@@ -15,6 +18,13 @@ public class CustomUserDetails implements UserDetails {
     private final boolean credentialsNonExpired;
     private final boolean enabled;
 
+    public CustomUserDetails(int id, String username) {
+        this.id = id;
+        this.username = username;
+        this.accountNonLocked = true;
+        this.credentialsNonExpired =true;
+        this.enabled = true;
+    }
     public CustomUserDetails(int id, String username,String password, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled) {
         this.id = id;
         this.username = username;

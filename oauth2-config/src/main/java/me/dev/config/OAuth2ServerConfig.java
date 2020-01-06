@@ -15,7 +15,8 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
-import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 @Configuration
 @EnableAuthorizationServer
@@ -23,6 +24,8 @@ public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     AccessTokenConverter accessTokenConverter;
+    @Autowired
+    List<TokenEnhancer> tokenEnhancerList;
     @Autowired
     private TokenStore tokenStore;
     @Autowired
@@ -44,37 +47,17 @@ public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
                 .autoApprove(true);
     }
 
-    @Bean
-    TokenEnhancer tokenEnhancer() {
-        return new CustomTokenEnhancer();
-    }
-
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
-        tokenEnhancerChain.setTokenEnhancers(
-                Arrays.asList(tokenEnhancer(), (TokenEnhancer) accessTokenConverter));
+        LinkedList<TokenEnhancer> list = new LinkedList<>(tokenEnhancerList);
+        tokenEnhancerChain.setTokenEnhancers(list);
         endpoints.authenticationManager(authenticationManager)
                 .tokenStore(tokenStore)
                 .tokenEnhancer(tokenEnhancerChain)
                 .accessTokenConverter(accessTokenConverter);
 
     }
-   /* @Autowired
-    UserDetailsService userDetailsService;
-    @Bean
-    public DefaultAccessTokenConverter defaultAccessTokenConverter() {
-        DefaultAccessTokenConverter tokenConverter = new
-                DefaultAccessTokenConverter();
-        tokenConverter.setUserTokenConverter(userAuthenticationConverter());
-        return tokenConverter;
-    }
-    @Bean
-    public UserAuthenticationConverter userAuthenticationConverter() {
-        DefaultUserAuthenticationConverter converter = new DefaultUserAuthenticationConverter();
-        converter.setUserDetailsService(userDetailsService);
-        return converter;
-    }*/
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

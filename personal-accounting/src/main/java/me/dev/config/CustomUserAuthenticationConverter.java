@@ -1,6 +1,7 @@
 package me.dev.config;
 
 import me.dev.dto.CustomUserDetails;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,7 +28,18 @@ public class CustomUserAuthenticationConverter implements UserAuthenticationConv
 
     @Override
     public Authentication extractAuthentication(Map<String, ?> map) {
-        Collection<? extends GrantedAuthority> authorities = Collections.emptyList();
-        return new UsernamePasswordAuthenticationToken(new CustomUserDetails(1, "asdasd", "N/A", false, false, false), "N/A", authorities);
+        CustomUserDetails userDetails = new CustomUserDetails((Integer) map.get(CustomUserDetails.USER_ID),
+                (String) map.get(CustomUserDetails.USERNAME));
+        return new AbstractAuthenticationToken(Collections.emptyList()) {
+            @Override
+            public Object getCredentials() {
+                return null;
+            }
+
+            @Override
+            public Object getPrincipal() {
+                return userDetails;
+            }
+        };
     }
 }

@@ -20,6 +20,7 @@ class JwkSetEndpoint {
     @GetMapping("/.well-known/jwks.json")
     @ResponseBody
     public Map<String, Object> getKey() {
+        System.out.println("----------------------------************HEY*************-----------------------------------------");
         return jwkSet.toJSONObject();
     }
 }

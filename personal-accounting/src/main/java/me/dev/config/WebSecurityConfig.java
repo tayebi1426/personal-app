@@ -1,6 +1,5 @@
 package me.dev.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
@@ -9,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 import java.util.Optional;
@@ -19,9 +19,9 @@ import java.util.Optional;
 @Configuration
 public class WebSecurityConfig extends ResourceServerConfigurerAdapter {
 
-    private final JwtTokenStore tokenStore;
+    private final TokenStore tokenStore;
 
-    public WebSecurityConfig(JwtTokenStore tokenStore) {
+    public WebSecurityConfig(TokenStore tokenStore) {
         this.tokenStore = tokenStore;
     }
 
@@ -32,7 +32,7 @@ public class WebSecurityConfig extends ResourceServerConfigurerAdapter {
     }
 
     @Override
-    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+    public void configure(ResourceServerSecurityConfigurer resources) {
         resources.tokenStore(tokenStore);
     }
 

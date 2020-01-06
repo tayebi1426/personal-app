@@ -7,7 +7,6 @@ import com.nimbusds.jose.jwk.RSAKey;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
@@ -15,10 +14,9 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 
 import java.security.KeyPair;
 import java.security.interfaces.RSAPublicKey;
-import java.util.Arrays;
 
 @Configuration
-public class JwtConfig {
+public class JwtTokenConfig {
 
     @Bean
     public TokenStore tokenStore(JwtAccessTokenConverter accessTokenConverter) {
@@ -46,6 +44,7 @@ public class JwtConfig {
                 .keyUse(KeyUse.SIGNATURE)
                 .algorithm(JWSAlgorithm.RS256)
                 .keyID("oauth2-server-kid");
+
         return new JWKSet(builder.build());
     }
 }
