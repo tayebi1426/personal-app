@@ -7,7 +7,7 @@ import javax.persistence.ManyToMany;
 import java.util.List;
 
 @Entity
-public class User extends AuditEntity<Long> {
+public class User extends AuditEntity<Integer> {
     private String username;
     private String password;
     private Boolean isExpired;

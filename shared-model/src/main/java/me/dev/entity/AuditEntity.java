@@ -1,10 +1,13 @@
 package me.dev.entity;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public abstract class AuditEntity<PK> {
 
     private PK id;
@@ -67,4 +70,5 @@ public abstract class AuditEntity<PK> {
     public boolean isNew() {
         return getId() == null;
     }
+
 }

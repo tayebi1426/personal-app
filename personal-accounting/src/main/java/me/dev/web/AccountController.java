@@ -23,8 +23,8 @@ public class AccountController {
     @PostMapping()
     public ResponseEntity<String> createNew(Authentication authentication, String name, Integer initialBalance) {
         CustomUserDetails principal = (CustomUserDetails) authentication.getPrincipal();
-        System.out.println("username : "+ principal.getUsername());
-       // accountService.createNew(new AccountDto(name,initialBalance));
+        System.out.println("username : " + principal.getUsername());
+        accountService.createNew(new AccountDto(name, initialBalance));
         return ResponseEntity.ok("ok");
     }
 }
