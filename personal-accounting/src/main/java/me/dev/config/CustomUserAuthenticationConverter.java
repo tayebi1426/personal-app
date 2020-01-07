@@ -25,12 +25,19 @@ public class CustomUserAuthenticationConverter implements UserAuthenticationConv
         }
         return response;
     }
-
+   /* @Override
+    public Authentication extractAuthentication(Map<String, ?> map) {
+        Collection<? extends GrantedAuthority> authorities = Collections.emptyList();
+        return new UsernamePasswordAuthenticationToken(new CustomUserDetails(1, "asdasd", "N/A", false, false, false), "N/A", authorities);
+    }*/
     @Override
     public Authentication extractAuthentication(Map<String, ?> map) {
         CustomUserDetails userDetails = new CustomUserDetails((Integer) map.get(CustomUserDetails.USER_ID),
                 (String) map.get(CustomUserDetails.USERNAME));
         return new AbstractAuthenticationToken(Collections.emptyList()) {
+            {
+                setAuthenticated(true);
+            }
             @Override
             public Object getCredentials() {
                 return null;

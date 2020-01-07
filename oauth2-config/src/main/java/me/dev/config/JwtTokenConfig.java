@@ -14,6 +14,7 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 
 import java.security.KeyPair;
 import java.security.interfaces.RSAPublicKey;
+import java.util.Collections;
 
 @Configuration
 public class JwtTokenConfig {
@@ -25,26 +26,22 @@ public class JwtTokenConfig {
 
     @Bean
     public JwtAccessTokenConverter accessTokenConverter(KeyPair keyPair) {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setKeyPair(keyPair);
-        return converter;
+        return new CustomJwtAccessTokenConverter(keyPair, Collections.singletonMap("kid","oauth2-server-kid"));
     }
 
     @Bean
     KeyPair keyPair() {
         ClassPathResource ksFile = new ClassPathResource("oauth2-server.jks");
-        KeyStoreKeyFactory ksFactory =
-                new KeyStoreKeyFactory(ksFile, "htb98980".toCharArray());
+        KeyStoreKeyFactory ksFactory = new KeyStoreKeyFactory(ksFile, "htb98980".toCharArray());
         return ksFactory.getKeyPair("oauth2-server-alias", "htb98980".toCharArray());
     }
 
     @Bean
-    public JWKSet jwkSet(KeyPair keyPair) {
-        RSAKey.Builder builder = new RSAKey.Builder((RSAPublicKey) keyPair.getPublic())
+    public JWKSet jwkSet() {
+        RSAKey.Builder builder = new RSAKey.Builder((RSAPublicKey) keyPair().getPublic())
                 .keyUse(KeyUse.SIGNATURE)
                 .algorithm(JWSAlgorithm.RS256)
                 .keyID("oauth2-server-kid");
-
         return new JWKSet(builder.build());
     }
 }
