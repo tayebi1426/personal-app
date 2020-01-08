@@ -8,7 +8,7 @@
         <version>2.2.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>me.devex</groupId>
+    <groupId>me.dev</groupId>
     <artifactId>personal-app-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -17,6 +17,7 @@
 
     <modules>
         <module>shared-model</module>
+        <module>security-service</module>
         <module>oauth2-config</module>
         <module>auth-server</module>
         <module>personal-accounting</module>
@@ -61,6 +62,7 @@
     </dependencyManagement>
     <properties>
         <java.version>1.8</java.version>
+        <app.version>0.0.1-SNAPSHOT</app.version>
         <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
         <spring-security-oauth2>2.3.8.RELEASE</spring-security-oauth2>
     </properties>

@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>me.devex</groupId>
+        <groupId>me.dev</groupId>
         <artifactId>personal-app-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>personal-acc-srv</artifactId>
+    <artifactId>personal-accounting</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Personal Accounting Service</name>
     <description>Personal Accounting Service</description>
@@ -17,7 +17,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>me.devex</groupId>
+            <groupId>me.dev</groupId>
             <artifactId>shared-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
