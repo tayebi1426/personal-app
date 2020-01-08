@@ -1,5 +1,6 @@
 package me.dev.entity;
 
+import org.springframework.data.domain.Auditable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -7,8 +8,8 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
-public abstract class AuditEntity<PK> {
+@EntityListeners(AuditEntityListener.class)
+public abstract class AuditEntity<PK>  {
 
     private PK id;
     private User createdBy;
@@ -17,7 +18,7 @@ public abstract class AuditEntity<PK> {
     private LocalDate lastModifiedDate;
 
     @Id
-    @GeneratedValue()
+    @GeneratedValue
     public PK getId() {
         return id;
     }
@@ -47,7 +48,6 @@ public abstract class AuditEntity<PK> {
     }
 
     @NotNull
-    @Column
     public LocalDate getCreatedDate() {
         return createdDate;
     }
@@ -57,7 +57,6 @@ public abstract class AuditEntity<PK> {
     }
 
     @NotNull
-    @Column
     public LocalDate getLastModifiedDate() {
         return lastModifiedDate;
     }

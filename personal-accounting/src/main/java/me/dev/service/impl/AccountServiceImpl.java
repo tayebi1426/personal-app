@@ -19,7 +19,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional
     public AccountDto createNew(AccountDto account) {
-        Account newAccount=new Account();
+        Account newAccount=new Account(account);
         return createNew(newAccount);
     }
 

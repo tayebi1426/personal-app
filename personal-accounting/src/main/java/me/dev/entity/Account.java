@@ -21,7 +21,7 @@ public class Account extends AuditEntity<Integer> {
     public Account(AccountDto accountDto) {
         this.name = accountDto.getName();
         this.initialBalance = accountDto.getInitialBalance();
-        this.balance = accountDto.getBalance();
+        this.balance = initialBalance;
     }
 
     public Account(String name, Integer initialBalance) {
@@ -29,7 +29,7 @@ public class Account extends AuditEntity<Integer> {
         this.initialBalance = initialBalance;
         this.balance = initialBalance;
     }
-    @Column
+
     @NotEmpty
     public String getName() {
         return name;
@@ -39,7 +39,6 @@ public class Account extends AuditEntity<Integer> {
         this.name = name;
     }
 
-    @Column
     @NotNull
     @Min(value = 0)
     public Integer getInitialBalance() {
@@ -50,7 +49,6 @@ public class Account extends AuditEntity<Integer> {
         this.initialBalance = initialBalance;
     }
 
-    @Column
     @NotNull
     @Min(value = 0)
     public Integer getBalance() {
