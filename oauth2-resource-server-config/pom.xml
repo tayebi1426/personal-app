@@ -7,22 +7,11 @@
         <artifactId>personal-app-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>personal-accounting</artifactId>
+    <artifactId>oauth2-resource-server-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Personal Accounting Service</name>
-    <description>Personal Accounting Service</description>
+    <name>oauth2-resource-server-config</name>
+    <description>oauth2-resource-server-config</description>
     <dependencies>
-        <dependency>
-            <groupId>com.oracle.ojdbc</groupId>
-            <artifactId>ojdbc10</artifactId>
-            <version>19.3.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.eatthepath</groupId>
-            <artifactId>java-otp</artifactId>
-            <version>0.2.0</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

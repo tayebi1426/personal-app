@@ -27,4 +27,10 @@ public class AccountController {
         accountService.createNew(new AccountDto(name, initialBalance));
         return ResponseEntity.ok("ok");
     }
+
+    @PostMapping("/list")
+    public ResponseEntity<String> list() {
+
+        return ResponseEntity.ok("ok");
+    }
 }

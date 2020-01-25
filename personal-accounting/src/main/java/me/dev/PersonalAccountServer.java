@@ -1,17 +1,39 @@
 package me.dev;
 
 
-import org.springframework.boot.SpringApplication;
+import com.eatthepath.otp.TimeBasedOneTimePasswordGenerator;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import javax.crypto.KeyGenerator;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.time.Duration;
+import java.time.Instant;
 
 @EnableWebMvc()
 @SpringBootApplication(scanBasePackages = "me.dev")
 public class PersonalAccountServer {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PersonalAccountServer.class, args);
-        //System.out.println(JwtHelper.decode("eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Nzc0MzU0MDcsInVzZXJfbmFtZSI6IkFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6ImIwYzdkMWJiLTRkZTgtNGE3YS04N2JjLWE1MWIyNTVkY2Y3ZSIsImNsaWVudF9pZCI6ImNsaWVudF9pZCIsInNjb3BlIjpbInVzZXJfaW5mbyJdfQ.R_hQKZwvi3Tv0aH5pc7MfG2rjNnHNJ9DnpKGQaiv1_8GwkQBmKL3qoxcdD3kUkw5CVbA_-EEDGZRl2SFeOjiWENvtnAz5rGMAlyB02JaeLtdyEnX4YSMdNodaTKabHOWB-stMOExiLGq2C7ZYxL3TYvC6yputvgcA5VBrnJmu5FEuGd9Cbj6Sxn6wHaam82TdmuH3PPm9bm1FbzjJmBFB9vHUYYwJY9MAPA0QSJ9FtWAsCRUbMa0JbpvjLeQB6UbiZZH0hI3JjlL7ErOhp9_TpyZFGGO9I6mOOTe2N4CxtKZrzSYjHUpcK0_K-jqh5yAXEE5iO45W3TGJKXk3sRkmw"));
+    public static void main(String[] args) throws Exception {
+        // SpringApplication.run(PersonalAccountServer.class, args);
+
+        final TimeBasedOneTimePasswordGenerator totp = new TimeBasedOneTimePasswordGenerator(Duration.ofSeconds(90),6);
+        final Key key;
+        {
+            final KeyGenerator keyGenerator = KeyGenerator.getInstance(totp.getAlgorithm());
+
+            // SHA-1 and SHA-256 prefer 64-byte (512-bit) keys; SHA512 prefers 128-byte (1024-bit) keys
+            keyGenerator.init(512);
+
+            key = keyGenerator.generateKey();
+        }
+        final Instant now = Instant.now();
+        final Instant later = now.plus(totp.getTimeStep());
+        System.out.format("Current password : %06d\n", totp.generateOneTimePassword(key, now));
+        System.out.format("Future password :  %06d\n", totp.generateOneTimePassword(key, later));
+
+
     }
 
 }
