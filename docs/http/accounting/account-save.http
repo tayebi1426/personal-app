@@ -1,0 +1,17 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+POST http://localhost:9001/account/save
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im9hdXRoMi1zZXJ2ZXIta2lkIn0.eyJleHAiOjE1ODU1MTIwOTUsInVzZXJJZCI6MSwidXNlcl9uYW1lIjoiQWRtaW4iLCJqdGkiOiJlZTk4MDRjMS04ZjZjLTRhOGItODgzMC1jMDFkNDQyNDllNjkiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJ1c2VyX2luZm8iXX0.FCy1xo2_MFEhxMp8zMJZMH6Odri_2_nsz5zf_rPwdjejYEzMuRYl3nLQM8oNJfkz3hz9vVC4dCv9HcHJCeEAo_aYFtn_HxVG0Zl29zO8Ypet7MO7VNGQlqDFOWzrQkjWw1Qmy1-NY1GHsw_WS4Gi4--zXpgjqpEkL4_MEiXKJ4oF55NWB4vftUc13-5Vjro8RXlSLbe3vN7XxI9PU5jNIDkgd24hsGg7x2YLfywlr_3_62rFISoO6pSqrUQvlIdFW4ZaBZjc9JTl006dnCM5eYAo0huAt-3xf5KolBbFw4PATYSch-OJlwUrSI25QPwAR-WyWbDsrrFX28wwTmE6FQ
+
+{
+  "name": "account1",
+  "initialBalance": 120000
+}
+
+###

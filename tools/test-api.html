@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function sendRequest() {
+            console.log('run sendRequest');
+            let url="http://127.0.0.1:9001/account/save";
+            let data={name:"account145",initialBalance:5455};
+            fetch(url, {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                //mode: 'no-cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                //credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im9hdXRoMi1zZXJ2ZXIta2lkIn0.eyJleHAiOjE1ODU0Mzg4ODQsInVzZXJJZCI6MSwidXNlcl9uYW1lIjoiQWRtaW4iLCJqdGkiOiJmOTUyODA2My1kYTk2LTRiZWQtODY1MS1iMzhkYjQ3NjFmZDUiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJ1c2VyX2luZm8iXX0.jXz5ot317wUWJnKyz5Asxq552xZM4tFg9GzJo6zfAnfvzteomnOpqRJdReebQu51YNUzfcSUOTY3ailpppuSZpdNzNJF6RXeeLvI1sFoJjwsfnp1aworpigPd_sojPueKCYHZJYXRt2Qp5i9sgaw7CvFQjULuwt3MIwU85ZHoIYmU_ssmYnBApttOy2LJprg2l9wIPcavBhvtP4Ll2BUnuZzd5wnMJaegEEqwcd4DBohiwRChdPkN98UJmCU1xy8ZsScrrFjq8AzyJSmUgmsztecNc1Fl-UGTazsaZkyNWdyzHF_EZcK3K4P9lFv4QF1eu0u0Cl0qVvDXNxlKR8BNA',
+                    'Content-Type': 'application/json'
+                },
+                //redirect: 'follow', // manual, *follow, error
+                //referrerPolicy: 'no-referrer', // no-referrer, *client
+                body: JSON.stringify(data) // body data type must match "Content-Type" header
+            }).then(res => {
+                console.log(res)
+            })
+        }
+    </script>
+</head>
+<body>
+<form>
+<button type="button" onclick="sendRequest();">Send Request</button>
+</form>
+
+</body>
+</html>

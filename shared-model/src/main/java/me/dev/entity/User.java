@@ -1,10 +1,6 @@
 package me.dev.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import java.util.List;
 
 @Entity
 public class User extends AuditEntity<Integer> {

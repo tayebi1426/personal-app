@@ -2,7 +2,6 @@ package me.dev.entity;
 
 import me.dev.dto.AccountDto;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;

@@ -6,6 +6,9 @@ public class AccountDto {
     private Integer initialBalance;
     private Integer balance;
 
+    public AccountDto() {
+    }
+
     public AccountDto(String name, Integer initBalance) {
         this.name=name;
         this.initialBalance=initBalance;

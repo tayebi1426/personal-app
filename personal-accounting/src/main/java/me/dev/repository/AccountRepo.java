@@ -6,6 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional(readOnly = true)
-public interface AccountRepository extends AbstractJpaRepository<Account, Integer> {
+public interface AccountRepo extends AbstractJpaRepository<Account, Integer> {
 
 }

@@ -1,8 +1,5 @@
 package me.dev.entity;
 
-import org.springframework.data.domain.Auditable;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -18,7 +15,7 @@ public abstract class AuditEntity<PK>  {
     private LocalDate lastModifiedDate;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public PK getId() {
         return id;
     }

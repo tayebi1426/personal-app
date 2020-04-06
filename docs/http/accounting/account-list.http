@@ -1,0 +1,10 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+POST http://localhost:9001/account/list
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im9hdXRoMi1zZXJ2ZXIta2lkIn0.eyJleHAiOjE1ODU0Mzg4ODQsInVzZXJJZCI6MSwidXNlcl9uYW1lIjoiQWRtaW4iLCJqdGkiOiJmOTUyODA2My1kYTk2LTRiZWQtODY1MS1iMzhkYjQ3NjFmZDUiLCJjbGllbnRfaWQiOiJjbGllbnRfaWQiLCJzY29wZSI6WyJ1c2VyX2luZm8iXX0.jXz5ot317wUWJnKyz5Asxq552xZM4tFg9GzJo6zfAnfvzteomnOpqRJdReebQu51YNUzfcSUOTY3ailpppuSZpdNzNJF6RXeeLvI1sFoJjwsfnp1aworpigPd_sojPueKCYHZJYXRt2Qp5i9sgaw7CvFQjULuwt3MIwU85ZHoIYmU_ssmYnBApttOy2LJprg2l9wIPcavBhvtP4Ll2BUnuZzd5wnMJaegEEqwcd4DBohiwRChdPkN98UJmCU1xy8ZsScrrFjq8AzyJSmUgmsztecNc1Fl-UGTazsaZkyNWdyzHF_EZcK3K4P9lFv4QF1eu0u0Cl0qVvDXNxlKR8BNA
+###

@@ -1,9 +1,15 @@
 server:
   port: 8001
-
+spring:
+  datasource:
+    driverclassname: org.hsqldb.jdbc.JDBCDriver
+    url: jdbc:hsqldb:hsql://127.0.0.1:5005/maindb
+    username:
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: none
 logging:
   level:
-    root: WARN
-    org.springframework.security: TRACE
-
-
+    root: info
+    org.springframework.security: info
