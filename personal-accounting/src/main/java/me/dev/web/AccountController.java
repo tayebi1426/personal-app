@@ -5,6 +5,7 @@ import me.dev.dto.CustomUserDetails;
 import me.dev.service.AccountService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ public class AccountController {
         this.accountService = accountService;
     }
 
+    //@PreAuthorize("prmitAll()")
     @PostMapping(value = "/save", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> save(@RequestBody AccountDto accountDto, Authentication authentication) {
         Assert.hasText(accountDto.getName(), "empty");

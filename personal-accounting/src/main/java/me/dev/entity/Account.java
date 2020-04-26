@@ -17,6 +17,10 @@ public class Account extends AuditEntity<Integer> {
     public Account() {
     }
 
+    public Account(Integer id) {
+        setId(id);
+    }
+
     public Account(AccountDto accountDto) {
         this.name = accountDto.getName();
         this.initialBalance = accountDto.getInitialBalance();

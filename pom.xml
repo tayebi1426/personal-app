@@ -60,9 +60,20 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <nonFilteredFileExtensions>jws</nonFilteredFileExtensions>
+                    <nonFilteredFileExtensions>crt</nonFilteredFileExtensions>
+                    <nonFilteredFileExtensions>jks</nonFilteredFileExtensions>
+                    <nonFilteredFileExtensions>pem</nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
         <java.version>1.8</java.version>
         <app.version>0.0.1-SNAPSHOT</app.version>
         <spring-boot-admin.version>2.2.0</spring-boot-admin.version>

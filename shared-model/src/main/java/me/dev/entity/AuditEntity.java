@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @MappedSuperclass
 @EntityListeners(AuditEntityListener.class)
-public abstract class AuditEntity<PK>  {
+public abstract class AuditEntity<PK extends Number>  {
 
     private PK id;
     private User createdBy;

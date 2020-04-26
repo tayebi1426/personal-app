@@ -1,4 +1,4 @@
-package me.dev.config;
+package me.dev.endpoint;
 
 import com.nimbusds.jose.jwk.JWKSet;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -8,6 +8,5 @@ public interface AccountService {
 
     AccountDto createNew(AccountDto account);
 
-    List<AccountDto> findAll();
 
 }

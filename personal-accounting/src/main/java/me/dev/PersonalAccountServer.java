@@ -8,9 +8,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication(scanBasePackages = "me.dev")
 public class PersonalAccountServer {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SpringApplication.run(PersonalAccountServer.class, args);
     }
-
 }
 

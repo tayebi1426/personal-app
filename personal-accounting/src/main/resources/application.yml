@@ -13,8 +13,11 @@ spring:
     url: jdbc:hsqldb:hsql://127.0.0.1:5005/maindb
     username:
     password:
-
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
 logging:
   level:
     root: info
-    org.springframework: info
+    org.springframework: debug

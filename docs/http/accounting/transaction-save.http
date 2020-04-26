@@ -1,0 +1,20 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+POST http://127.0.0.1:9001/transaction/save
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im9hdXRoMi1zZXJ2ZXIta2lkIn0.eyJ1c2VyX25hbWUiOiJBJGRtSW4iLCJzY29wZSI6WyJ1c2VyX2luZm8iXSwiZXhwIjoxNTg2NTY4MzkxLCJ1c2VySWQiOjEsImF1dGhvcml0aWVzIjpbIlVTRVIiXSwianRpIjoiZjZiOTBhMzktZjlhNC00NTdlLWI3MTAtMmM4NmMzYTg1ZDk5IiwiY2xpZW50X2lkIjoiY2xpZW50X2lkIn0.RDBA8KyjaGS2ZowRvdsZ7uA1dTiyKxZtcwpiqyf13pYEu99zv0V7hlyZU_Aa43W7NeWyvg0eAIpLEEdDb7dM7jy8hlMc5NMwIY-79lCGgVqu4c2-rjKHJO4XtM5BgAqGV7_pW5UQf8ewDztZHfUuRgzztx7L4zkYsofbzK8KdLjA1442WAEkgLRBP_-J09FnOoMGCQ6PvWsoTH02u52_VuaY6NAJzctlUTWx_63edr7Nx08Q2Lyawutj5pbwjF-cnH0xgwk5W_CUX6BpDAZVVtvh-GPEp9il96-WvaiD7-m4avteMQdq9Btdp1FIh9JKR6TlluRpynYiNqa--aIZSA
+
+{
+  "transactionDate": "2020-04-09",
+  "transactionAmount": 15000,
+  "description": "salary",
+  "accountId": 1,
+  "transactionTypeId": 1
+}
+
+###

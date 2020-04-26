@@ -56,7 +56,6 @@ public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
                 .tokenStore(tokenStore)
                 .tokenEnhancer(tokenEnhancerChain)
                 .accessTokenConverter(accessTokenConverter);
-
     }
 
     @Bean
