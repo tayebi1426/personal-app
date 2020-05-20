@@ -10,11 +10,11 @@ public class SecurityConfiguration {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new CustomUserDetailsService();
+        return new JdbcUserDetailsService();
     }
 
     @Bean
-    TokenEnhancer tokenEnhancer() {
-        return new CustomTokenEnhancer();
+    TokenEnhancer tokenEnhancer(UserDetailsService userDetailsService) {
+        return new UserTokenEnhancer(userDetailsService);
     }
 }

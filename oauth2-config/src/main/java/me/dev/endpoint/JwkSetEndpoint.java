@@ -1,6 +1,7 @@
 package me.dev.endpoint;
 
 import com.nimbusds.jose.jwk.JWKSet;
+import net.minidev.json.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-class JwkSetEndpoint {
+public class JwkSetEndpoint {
 
     private JWKSet jwkSet;
 
@@ -18,7 +19,7 @@ class JwkSetEndpoint {
 
     @GetMapping("/.well-known/jwks.json")
     @ResponseBody
-    public Map<String, Object> getKey() {
+    public JSONObject getKey() {
         return jwkSet.toJSONObject();
     }
 }

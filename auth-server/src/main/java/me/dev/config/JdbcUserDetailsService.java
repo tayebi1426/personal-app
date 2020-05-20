@@ -13,8 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.Collections;
 import java.util.Set;
 
-
-public class CustomUserDetailsService implements UserDetailsService {
+public class JdbcUserDetailsService implements UserDetailsService {
     private final static Set<GrantedAuthority> AUTHENTICATED_USER_AUTHORITIES =
             Collections.singleton(new SimpleGrantedAuthority("USER"));
 

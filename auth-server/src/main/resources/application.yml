@@ -13,3 +13,8 @@ logging:
   level:
     root: info
     org.springframework.security: info
+
+
+oauth-srv:
+  accessTokenValiditySeconds: 1800
+
