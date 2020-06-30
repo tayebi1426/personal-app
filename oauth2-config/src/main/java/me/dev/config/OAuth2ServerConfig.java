@@ -17,7 +17,6 @@ import java.util.List;
 
 @Configuration
 @EnableAuthorizationServer
-
 public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired

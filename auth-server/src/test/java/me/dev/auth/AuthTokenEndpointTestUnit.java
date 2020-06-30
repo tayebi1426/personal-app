@@ -4,10 +4,13 @@ import net.minidev.json.JSONArray;
 import org.hamcrest.core.Is;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -18,16 +21,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
+@ConfigurationPropertiesScan(basePackages = "me.dev.auth")
+@EnableConfigurationProperties(value = AppTestProps.class)
+@TestPropertySource("classpath:application.properties")
 @AutoConfigureMockMvc
 public class AuthTokenEndpointTestUnit {
 
     @Autowired
     private MockMvc mockMvc;
+    @Autowired
+    private AppTestProps appTestProps;
+
+    private final static String ACCESS_TOKEN_PATH="/oauth/token";
+    private final static String JWK_PATH="/.well-known/jwks.json";
 
 
     @Test
-    public void failLogin() throws Exception {
-        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/oauth/token");
+    public void invalidCredential() throws Exception {
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post(ACCESS_TOKEN_PATH);
         requestBuilder.param("grant_type", "password")
                 .param("username", "nonce")
                 .param("password", "123456789")
@@ -42,11 +53,11 @@ public class AuthTokenEndpointTestUnit {
 
     @Test
     public void takeOAuth2AccessToken() throws Exception {
-        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/oauth/token");
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post(ACCESS_TOKEN_PATH);
         requestBuilder.param("grant_type", "password")
-                .param("username", "A$dmIn")
-                .param("password", "1234")
-                .header("Authorization", "Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=");
+                .param("username", "")
+                .param("password", "")
+                .header("Authorization", "Basic ");
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print())
@@ -59,7 +70,7 @@ public class AuthTokenEndpointTestUnit {
 
     @Test
     public void getOAuthServerKid() throws Exception {
-        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/.well-known/jwks.json");
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get(JWK_PATH);
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print())
