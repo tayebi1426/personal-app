@@ -55,9 +55,9 @@ public class AuthTokenEndpointTestUnit {
     public void takeOAuth2AccessToken() throws Exception {
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post(ACCESS_TOKEN_PATH);
         requestBuilder.param("grant_type", "password")
-                .param("username", "")
-                .param("password", "")
-                .header("Authorization", "Basic ");
+                .param("username", "A$dmIn")
+                .param("password", "1234")
+                .header("Authorization", "Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=");
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print())
