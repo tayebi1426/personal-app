@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 public class Account extends AuditEntity<Integer> {
 
     private String name;
-    private Integer initialBalance;
     private Integer balance;
 
     public Account() {
@@ -23,14 +22,7 @@ public class Account extends AuditEntity<Integer> {
 
     public Account(AccountDto accountDto) {
         this.name = accountDto.getName();
-        this.initialBalance = accountDto.getInitialBalance();
-        this.balance = initialBalance;
-    }
-
-    public Account(String name, Integer initialBalance) {
-        this.name = name;
-        this.initialBalance = initialBalance;
-        this.balance = initialBalance;
+        this.balance = accountDto.getBalance();
     }
 
     @NotEmpty
@@ -40,16 +32,6 @@ public class Account extends AuditEntity<Integer> {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @NotNull
-    @Min(value = 0)
-    public Integer getInitialBalance() {
-        return initialBalance;
-    }
-
-    public void setInitialBalance(Integer initialBalance) {
-        this.initialBalance = initialBalance;
     }
 
     @NotNull

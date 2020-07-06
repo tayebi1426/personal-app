@@ -2,6 +2,7 @@ package me.dev.web;
 
 import me.dev.dto.AccountDto;
 import me.dev.dto.CustomUserDetails;
+import me.dev.dto.datagrid.DataSourceResponse;
 import me.dev.service.AccountService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -32,8 +35,12 @@ public class AccountController {
         return ResponseEntity.ok("ok");
     }
 
+    /*@PostMapping("/list")
+    public ResponseEntity<DataSourceResponse<AccountDto>> list() {
+        return  ResponseEntity.ok(accountService.getAccountList());
+    }*/
     @PostMapping("/list")
-    public ResponseEntity<String> list() {
-        return ResponseEntity.ok("ok");
+    public ResponseEntity<List<AccountDto>> list() {
+        return  ResponseEntity.ok(accountService.getAccountList().getData());
     }
 }

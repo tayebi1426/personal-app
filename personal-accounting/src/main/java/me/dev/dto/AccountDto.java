@@ -1,17 +1,23 @@
 package me.dev.dto;
 
+import me.dev.entity.Account;
+
 public class AccountDto {
 
     private String name;
-    private Integer initialBalance;
     private Integer balance;
 
     public AccountDto() {
     }
 
-    public AccountDto(String name, Integer initBalance) {
-        this.name=name;
-        this.initialBalance=initBalance;
+    public AccountDto(Account account) {
+        this.name = account.getName();
+        this.balance = account.getBalance();
+    }
+
+    public AccountDto(String name, Integer balance) {
+        this.name = name;
+        this.balance = balance;
     }
 
     public String getName() {
@@ -20,14 +26,6 @@ public class AccountDto {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getInitialBalance() {
-        return initialBalance;
-    }
-
-    public void setInitialBalance(Integer initialBalance) {
-        this.initialBalance = initialBalance;
     }
 
     public Integer getBalance() {

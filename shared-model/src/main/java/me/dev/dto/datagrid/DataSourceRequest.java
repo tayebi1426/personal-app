@@ -2,7 +2,7 @@ package me.dev.dto.datagrid;
 
 import java.util.List;
 
-public class DataGridRequest {
+public class DataSourceRequest {
 
     private Integer skip;
     private Integer take;
