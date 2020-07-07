@@ -14,14 +14,14 @@ public class PersonalAccountServer {
 
     public static void main(String[] args) throws IOException {
         SpringApplication.run(PersonalAccountServer.class, args);
-        Main.main(args);
-        System.out.println(foldedLog());
+        //Main.main(args);
+        //System.out.println(foldedLog());
     }
-
+/*
     @Benchmark
     public static double foldedLog() {
         int x = 8;
         return Math.log(x);
-    }
+    }*/
 }
 

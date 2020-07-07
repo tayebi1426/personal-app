@@ -25,7 +25,6 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    //@PreAuthorize("prmitAll()")
     @PostMapping(value = "/save", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> save(@RequestBody AccountDto accountDto, Authentication authentication) {
         Assert.hasText(accountDto.getName(), "empty");
@@ -35,12 +34,8 @@ public class AccountController {
         return ResponseEntity.ok("ok");
     }
 
-    /*@PostMapping("/list")
+    @PostMapping("/list")
     public ResponseEntity<DataSourceResponse<AccountDto>> list() {
         return  ResponseEntity.ok(accountService.getAccountList());
-    }*/
-    @PostMapping("/list")
-    public ResponseEntity<List<AccountDto>> list() {
-        return  ResponseEntity.ok(accountService.getAccountList().getData());
     }
 }
