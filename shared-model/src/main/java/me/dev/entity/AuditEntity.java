@@ -6,9 +6,9 @@ import java.time.LocalDate;
 
 @MappedSuperclass
 @EntityListeners(AuditEntityListener.class)
-public abstract class AuditEntity<PK extends Number>  {
+public abstract class AuditEntity<T extends Number>  {
 
-    private PK id;
+    private T id;
     private User createdBy;
     private User lastModifiedBy;
     private LocalDate createdDate;
@@ -16,11 +16,11 @@ public abstract class AuditEntity<PK extends Number>  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public PK getId() {
+    public T getId() {
         return id;
     }
 
-    public void setId(PK id) {
+    public void setId(T id) {
         this.id = id;
     }
 
