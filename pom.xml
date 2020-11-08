@@ -17,29 +17,10 @@
 
     <modules>
         <module>shared-model</module>
-        <module>security-service</module>
         <module>oauth2-config</module>
         <module>auth-server</module>
         <module>personal-accounting</module>
     </modules>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!--  <dependency>
-              <groupId>org.springframework.security</groupId>
-              <artifactId>spring-security-test</artifactId>
-              <scope>test</scope>
-          </dependency>-->
-    </dependencies>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -67,11 +48,23 @@
                 <artifactId>jmh-generator-annprocess</artifactId>
                 <version>1.23</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>2.3.5.RELEASE</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
         <plugins>
-            <plugin>
+         <!--   <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <configuration>
                     <nonFilteredFileExtensions>jws</nonFilteredFileExtensions>
@@ -79,7 +72,7 @@
                     <nonFilteredFileExtensions>jks</nonFilteredFileExtensions>
                     <nonFilteredFileExtensions>pem</nonFilteredFileExtensions>
                 </configuration>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -91,7 +84,7 @@
                             <goal>analyze-only</goal>
                         </goals>
                         <configuration>
-                            <failOnWarning>true</failOnWarning>
+                            <failOnWarning>false</failOnWarning>
 
                             <!-- ignore jsr305 for both "used but undeclared" and "declared but unused" -->
                             <ignoredDependencies>

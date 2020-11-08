@@ -1,5 +1,11 @@
+logging:
+  level:
+    root: error
+    org.springframework.security: debug
+
 server:
   port: 8001
+
 spring:
   datasource:
     driverclassname: org.hsqldb.jdbc.JDBCDriver
@@ -9,11 +15,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
-logging:
-  level:
-    root: info
-    org.springframework.security: info
-
 
 oauth-srv:
   accessTokenValiditySeconds: 1800
