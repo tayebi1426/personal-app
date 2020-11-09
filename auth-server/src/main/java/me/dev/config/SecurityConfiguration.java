@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 
+import javax.sql.DataSource;
+
 @Configuration
 public class SecurityConfiguration {
 
@@ -17,5 +19,10 @@ public class SecurityConfiguration {
     @Bean
     TokenEnhancer tokenEnhancer(UserDetailsService userDetailsService) {
         return new UserTokenEnhancer(userDetailsService);
+    }
+
+    @Bean
+    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
     }
 }
