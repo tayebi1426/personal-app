@@ -24,6 +24,7 @@ public class CustomUserAuthenticationConverter implements UserAuthenticationConv
         }
         return response;
     }
+
     @Override
     public Authentication extractAuthentication(Map<String, ?> map) {
         CustomUserDetails userDetails = new CustomUserDetails((Integer) map.get(CustomUserDetails.USER_ID),

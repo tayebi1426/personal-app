@@ -35,11 +35,12 @@ public class WebSecurityConfig extends ResourceServerConfigurerAdapter {
         http.cors().and().authorizeRequests().anyRequest().authenticated();
         http.csrf().disable();
     }
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Collections.singletonList("*"));
-        configuration.setAllowedMethods(Arrays.asList(    "GET", "POST", "DELETE"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "DELETE"));
         // setAllowCredentials(true) is important, otherwise:
         // The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'.
         configuration.setAllowCredentials(true);
@@ -50,6 +51,7 @@ public class WebSecurityConfig extends ResourceServerConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
         resources.tokenStore(tokenStore);

@@ -1,15 +1,23 @@
 package me.dev.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class PersonDto {
 
     private Integer id;
+    @NotEmpty
     private String firstName;
+    @NotEmpty
     private String lastName;
+    @NotEmpty
     private String nationalCode;
+    @NotEmpty
     private String fatherName;
+    @NotNull
     private Date birthDate;
+    @NotNull
     private GenderDto gender;
 
     public Integer getId() {

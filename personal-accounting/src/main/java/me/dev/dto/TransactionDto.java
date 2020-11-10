@@ -1,10 +1,6 @@
 package me.dev.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
-import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -13,7 +9,7 @@ public class TransactionDto {
 
     private Integer id;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date transactionDate;
     private Integer transactionAmount;
     private String description;

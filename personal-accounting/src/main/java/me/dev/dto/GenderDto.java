@@ -1,16 +1,31 @@
 package me.dev.dto;
 
+import me.dev.entity.Gender;
+
 public class GenderDto {
 
-    private Integer id;
+    private Byte id;
     private String code;
     private String title;
 
-    public Integer getId() {
+    public GenderDto() {
+    }
+
+    public GenderDto(Gender gender) {
+        this(gender.getId(),gender.getCode(),gender.getTitle());
+    }
+
+    public GenderDto(Byte id, String code, String title) {
+        this.id = id;
+        this.code = code;
+        this.title = title;
+    }
+
+    public Byte getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Byte id) {
         this.id = id;
     }
 

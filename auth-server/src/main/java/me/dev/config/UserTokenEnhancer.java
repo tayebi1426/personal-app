@@ -11,7 +11,7 @@ import java.util.Collections;
 
 public class UserTokenEnhancer implements TokenEnhancer {
 
-    private UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
 
     public UserTokenEnhancer(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
@@ -19,7 +19,6 @@ public class UserTokenEnhancer implements TokenEnhancer {
 
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
-
         CustomUserDetails userDetails = getUserDetails(authentication);
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(Collections.singletonMap("userId", userDetails.getId()));
         return accessToken;

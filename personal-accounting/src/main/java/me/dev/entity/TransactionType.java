@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 
 @Entity
 @Immutable
-public class TransactionType extends ImmutableEntity<Byte>{
+public class TransactionType extends ImmutableEntity<Byte> {
 
     private String code;
     private String title;

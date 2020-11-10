@@ -3,7 +3,7 @@ package me.dev.entity;
 import javax.persistence.Entity;
 
 @Entity
-public class Gender extends ImmutableEntity<Integer> {
+public class Gender extends ImmutableEntity<Byte> {
 
     private String code;
     private String title;

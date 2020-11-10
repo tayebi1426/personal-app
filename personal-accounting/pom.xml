@@ -9,8 +9,8 @@
     </parent>
     <artifactId>personal-accounting</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Personal Accounting Service</name>
-    <description>Personal Accounting Service</description>
+    <name>Personal Accounting</name>
+    <description>Personal Accounting</description>
     <dependencies>
         <dependency>
             <groupId>com.oracle.ojdbc</groupId>

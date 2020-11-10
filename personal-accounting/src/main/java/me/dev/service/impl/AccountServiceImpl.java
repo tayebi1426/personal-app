@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Service
 public class AccountServiceImpl implements AccountService {
 
-    private AccountRepo accountRepo;
+    private final AccountRepo accountRepo;
 
     public AccountServiceImpl(AccountRepo accountRepo) {
         this.accountRepo = accountRepo;
@@ -23,7 +23,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional
     public AccountDto createNew(AccountDto accountDto) {
-        Account newAccount=new Account(accountDto);
+        Account newAccount = new Account(accountDto);
         return createNew(newAccount);
     }
 
@@ -32,7 +32,7 @@ public class AccountServiceImpl implements AccountService {
     public DataSourceResponse<AccountDto> getAccountList() {
         List<Account> accountList = accountRepo.findAll();
         List<AccountDto> accountDtoList = accountList.stream().map(AccountDto::new).collect(Collectors.toList());
-        return new DataSourceResponse<AccountDto>(accountDtoList.size(),accountDtoList);
+        return new DataSourceResponse<AccountDto>(accountDtoList.size(), accountDtoList);
     }
 
     @Transactional

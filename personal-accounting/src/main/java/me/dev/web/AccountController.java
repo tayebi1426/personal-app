@@ -6,12 +6,9 @@ import me.dev.dto.datagrid.DataSourceResponse;
 import me.dev.service.AccountService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @RestController
@@ -19,7 +16,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class AccountController {
 
-    private AccountService accountService;
+    private final AccountService accountService;
 
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
@@ -36,6 +33,6 @@ public class AccountController {
 
     @PostMapping("/list")
     public ResponseEntity<DataSourceResponse<AccountDto>> list() {
-        return  ResponseEntity.ok(accountService.getAccountList());
+        return ResponseEntity.ok(accountService.getAccountList());
     }
 }
