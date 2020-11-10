@@ -12,9 +12,8 @@ spring:
     url: jdbc:hsqldb:hsql://127.0.0.1:5005/maindb
     username:
     password:
-  jpa:
-    hibernate:
-      ddl-auto: none
+    type: org.hsqldb.jdbc.JDBCDataSource
+
 
 oauth-srv:
   accessTokenValiditySeconds: 1800

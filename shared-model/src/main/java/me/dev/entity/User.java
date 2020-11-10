@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class User extends AuditEntity<Integer> {
+
     private String username;
     private String password;
     private Boolean isExpired;

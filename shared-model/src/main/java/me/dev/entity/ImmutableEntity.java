@@ -1,5 +1,7 @@
 package me.dev.entity;
 
+
+
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -7,6 +9,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 //@Immutable
 public abstract class ImmutableEntity<PK extends Number> {
+
     private PK id;
 
     @Id
