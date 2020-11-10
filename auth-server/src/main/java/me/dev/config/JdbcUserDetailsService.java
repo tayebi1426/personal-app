@@ -11,18 +11,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import java.util.Collections;
-import java.util.Set;
+import java.util.*;
 
 public class JdbcUserDetailsService implements UserDetailsService {
 
     private static final Logger logger = LoggerFactory.getLogger(JdbcUserDetailsService.class);
 
-    private final static Set<GrantedAuthority> AUTHENTICATED_USER_AUTHORITIES =
-            Collections.singleton(new SimpleGrantedAuthority("ADMIN_USER"));
+    private static final Set<GrantedAuthority> TEMP_USER_AUTHORITIES = new HashSet<>(Arrays.asList(new SimpleGrantedAuthority("USER"), new SimpleGrantedAuthority("ADMIN_USER")));
 
 
-    private final static String FETCH_USER_QUERY =
+    private static final String FETCH_USER_QUERY =
             "select u.id,u.password,u.locked,u.expired from USER u where u.username=:username";
 
     private final JdbcTemplate jdbcTemplate;
@@ -42,10 +40,10 @@ public class JdbcUserDetailsService implements UserDetailsService {
                                     !rs.getBoolean("locked"),
                                     !rs.getBoolean("expired"),
                                     !rs.getBoolean("expired"),
-                                    AUTHENTICATED_USER_AUTHORITIES)
+                                    TEMP_USER_AUTHORITIES)
             );
         } catch (EmptyResultDataAccessException e) {
-            logger.debug(this.toString(),e);
+            logger.debug(this.toString(), e);
             throw new UsernameNotFoundException("user not found!");
         }
     }
